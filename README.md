@@ -1,8 +1,8 @@
 # Heroku CI buildpack: Postgis
 
-- Postgis 2.5.2 for postgresql 11.5.*
+- Postgis 3.3.0 for postgresql 14.9.\*
 - Proj 4.9.2
-- Geos 3.7.2
+- Geos 3.9.4
 - without raster support!
 
 ## How does it work?
@@ -22,11 +22,11 @@ Just add it to `app.json` definition, like:
  "environments": {
     "test": {
       "buildpacks": [
-        { "url":  "https://github.com/riskmethods/heroku-buildpack-ci-postgis" },
+        { "url":  "https://github.com/marivaldo/heroku-buildpack-ci-postgis" },
         { "url": "heroku/nodejs"},
         { "url": "heroku/ruby" }
       ],
-      "env": {  "POSTGRESQL_VERSION": "11.5" },
+      "env": {  "POSTGRESQL_VERSION": "14" },
       "addons": ["heroku-postgresql:in-dyno"]
     }
   }
@@ -49,5 +49,5 @@ docker cp {id-of-container}:/postgis-dependencies.tar.gz .
 docker cp {id-of-container}:/postgis.tar.gz .
 ```
 
-Now you have files inside your machine, go to S3 UI and put them inside `docs.riskmethods.net` bucket.
+Now you have files inside your machine, go to S3 UI and put them inside your bucket.
 Don't forget to allow read-all access.
